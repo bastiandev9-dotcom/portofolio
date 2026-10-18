@@ -11,7 +11,6 @@ import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import Work from '../components/Work.astro';
 import Footer from '../components/Footer.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
 
 interface Props {
   lang: Locale;
@@ -79,7 +78,7 @@ const ogImage = new URL('/og.png', Astro.site);
 
   <body>
     <a class="skip-link" href="#main">{dict['a11y.skip']}</a>
-    {path !== 'contact' && <Nav lang={lang} path={path} />}
+    <Nav lang={lang} path={path} />
 
     <main id="main">
       {path === 'home' && <Hero lang={lang} />}
@@ -145,10 +144,6 @@ const ogImage = new URL('/og.png', Astro.site);
         path === 'contact' && (
           <div class="touch">
             <div class="container">
-              <div class="tools">
-                <ThemeToggle lang={lang} />
-              </div>
-
               <div class="grid">
               <header class="who reveal">
                 <p class="wordmark">{profile.name}<span>.</span></p>
@@ -400,11 +395,11 @@ const ogImage = new URL('/og.png', Astro.site);
     margin-top: 40px;
   }
 
-/* ---------- contact (self-contained page: no Nav, no Footer) ---------- */
+/* ---------- contact (Nav stays, Footer does not) ---------- */
 
   .touch {
-    padding-block: clamp(48px, 8vh, 96px) var(--section-y);
-    min-height: 100vh;
+    padding-block: clamp(40px, 6vh, 72px) var(--section-y);
+    min-height: calc(100vh - 64px);
     display: flex;
     flex-direction: column;
   }
@@ -413,12 +408,6 @@ const ogImage = new URL('/og.png', Astro.site);
     flex: 1;
     display: flex;
     flex-direction: column;
-  }
-
-  .tools {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 36px;
   }
 
   .grid {
