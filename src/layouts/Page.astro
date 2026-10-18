@@ -154,16 +154,6 @@ const ogImage = new URL('/og.png', Astro.site);
                 </p>
               </header>
 
-              <nav class="col pages reveal" style="--d: 60ms" aria-label={dict['contact.pages']}>
-                <p class="label">{dict['contact.pages']}</p>
-                <ul>
-                  <li><a href={hrefFor(lang, 'home')}>{dict['nav.home']}</a></li>
-                  <li><a href={hrefFor(lang, 'work')}>{dict['nav.work']}</a></li>
-                  <li><a href={hrefFor(lang, 'about')}>{dict['nav.about']}</a></li>
-                  <li><a href={hrefFor(lang, 'contact')}>{dict['nav.contact']}</a></li>
-                </ul>
-              </nav>
-
               <nav class="col social reveal" style="--d: 120ms" aria-label={dict['contact.social']}>
                 <p class="label">{dict['contact.social']}</p>
                 <ul>
@@ -413,10 +403,10 @@ const ogImage = new URL('/og.png', Astro.site);
   .grid {
     flex: 1;
     display: grid;
-    grid-template-columns: 1.4fr 0.9fr 0.9fr 1.25fr;
+    grid-template-columns: 1.5fr 0.9fr 1.25fr;
     grid-template-areas:
-      'who pages social mail'
-      'who pages social card'
+      'who social mail'
+      'who social card'
       'copy copy copy copy';
     column-gap: 40px;
     align-content: start;
@@ -424,10 +414,6 @@ const ogImage = new URL('/og.png', Astro.site);
 
   .who {
     grid-area: who;
-  }
-
-  .pages {
-    grid-area: pages;
   }
 
   .social {
@@ -622,7 +608,7 @@ const ogImage = new URL('/og.png', Astro.site);
       grid-template-columns: 1fr 1fr;
       grid-template-areas:
         'who mail'
-        'pages social'
+        'social social'
         'card card'
         'copy copy';
       row-gap: 44px;
@@ -640,7 +626,6 @@ const ogImage = new URL('/og.png', Astro.site);
       grid-template-areas:
         'who'
         'mail'
-        'pages'
         'social'
         'card'
         'copy';

@@ -10,7 +10,6 @@ export const id: Dict = {
   'a11y.lang': 'Switch to English',
   'a11y.openMenu': 'Buka navigasi',
 
-  'nav.home': 'Beranda',
   'nav.work': 'Karya',
   'nav.about': 'Tentang',
   'nav.contact': 'Kontak',
@@ -39,7 +38,6 @@ export const id: Dict = {
   'contact.heading': 'Kalau ada masalah yang memang seperti ini, saya tertarik. Boleh kita bicara?',
   'contact.note':
     'Pelajar full-stack development dari Pekalongan, Indonesia. Saat ini terbuka untuk magang dan posisi junior.',
-  'contact.pages': 'Halaman',
   'contact.social': 'Sosial',
   'contact.card': 'Mari bicara',
   'contact.field.first': 'Nama depan',

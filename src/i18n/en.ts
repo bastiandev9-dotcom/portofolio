@@ -8,7 +8,6 @@ export const en = {
   'a11y.lang': 'Ganti ke Bahasa Indonesia',
   'a11y.openMenu': 'Open navigation',
 
-  'nav.home': 'Home',
   'nav.work': 'Work',
   'nav.about': 'About',
   'nav.contact': 'Contact',
@@ -37,7 +36,6 @@ export const en = {
   'contact.heading': "If something looks like your kind of problem, let's talk.",
   'contact.note':
     'Full-stack development learner based in Pekalongan, Indonesia. Currently open to internships and junior roles.',
-  'contact.pages': 'Pages',
   'contact.social': 'Social',
   'contact.card': "Let's talk",
   'contact.field.first': 'First name',
