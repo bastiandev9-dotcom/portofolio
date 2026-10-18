@@ -434,11 +434,12 @@ path === 'contact' && (
     background: var(--accent);
   }
 
+  /* Same recipe as the project titles on /work/ */
   .intro h1 {
-    font-size: var(--text-display);
+    font-size: var(--text-xl);
     font-weight: 500;
-    line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-display);
+    line-height: var(--leading-snug);
+    letter-spacing: -0.02em;
   }
 
   .intro h1 span {
@@ -455,9 +456,9 @@ path === 'contact' && (
     align-self: flex-start;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line-strong);
-    font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+    font-size: var(--text-lg);
     font-weight: 500;
-    letter-spacing: var(--tracking-display);
+    letter-spacing: -0.02em;
     transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
   }
 
