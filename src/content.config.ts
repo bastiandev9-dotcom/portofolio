@@ -14,10 +14,6 @@ const projects = defineCollection({
     live: z.string().url().optional(),
     repo: z.string().url(),
     team: z.boolean().default(false),
-    /** filenames inside src/assets/projects/sawmoto/, without extension */
-    images: z.array(z.string()).default([]),
-    /** mono captions, same length as images */
-    captions: z.array(z.string()).default([]),
   }),
 });
 

@@ -6,8 +6,6 @@ year: 2026
 stack: ['Next.js', 'TypeScript', 'MongoDB']
 live: https://sa-wmoto.vercel.app
 repo: https://github.com/bastiandev9-dotcom/SAWmoto
-images: ['01-beranda', '02-kalkulator', '03-data-motor', '04-tambah-motor']
-captions: ['Beranda', 'Kalkulator SAW', 'Data Motor', 'Tambah Motor']
 ---
 
 A decision support system that ranks Honda motorcycles with Simple Additive Weighting — 16 models scored against three weighted criteria: price, tank capacity, and engine displacement.

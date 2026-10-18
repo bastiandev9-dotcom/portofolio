@@ -46,26 +46,14 @@ stack: ['Next.js', 'TypeScript']
 repo: https://github.com/...
 live: https://...        # optional — omit if there is no demo
 team: false
-images: []               # filenames in src/assets/projects/<slug>/, no extension
-captions: []             # one per image
 ```
-
-Only the project with images gets the gallery. Projects without stay as text
-rows — deliberate, not missing.
 
 ## Screenshots
 
-Drop files into `src/assets/projects/sawmoto/`:
-
-```
-01-beranda.png
-02-kalkulator.png
-03-data-motor.png
-04-tambah-motor.png
-```
-
-Astro converts them to WebP with a responsive `srcset` at build time. An empty
-folder is fine — the project just renders as text.
+There are none, on purpose. The page carries no imagery — the work is set in
+type and separated by hairlines. If that ever changes, images live in
+`src/assets/projects/<slug>/` and Astro converts them to WebP with a
+responsive `srcset` at build time.
 
 ## Notes
 
