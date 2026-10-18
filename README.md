@@ -46,6 +46,29 @@ you on the same page — `/id/work/` links to `/work/`.
 links, no prose), `full` on the work page (prose plus the archive bar). Both
 read the same Markdown, so a project is never written twice.
 
+`/contact/` is self-contained — no Nav, no Footer, its own wordmark and page
+links, like a landing page.
+
+## Contact form
+
+`src/pages/api/contact.ts` is the only server-rendered route
+(`export const prerender = false`). The other eight pages ship as plain HTML.
+It posts to the Resend REST API with `fetch` — no `resend` package.
+
+Set these in `.env` locally and in the Vercel project settings:
+
+```
+RESEND_API_KEY=re_...
+CONTACT_FROM=Portfolio <noreply@yourdomain.com>
+CONTACT_TO=someone@example.com      # optional, defaults to profile.email
+```
+
+`CONTACT_FROM` must be a sender Resend has verified. Until they are set the
+endpoint returns 500 and logs which one is missing.
+
+Note the trailing slash: the deployed route is `/api/contact/`, and
+`/api/contact` 404s.
+
 ## Adding a project
 
 Create `src/content/projects/en/<slug>.md` and `.../id/<slug>.md`. The

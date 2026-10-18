@@ -8,6 +8,7 @@ export const en = {
   'a11y.lang': 'Ganti ke Bahasa Indonesia',
   'a11y.openMenu': 'Open navigation',
 
+  'nav.home': 'Home',
   'nav.work': 'Work',
   'nav.about': 'About',
   'nav.contact': 'Contact',
@@ -34,6 +35,21 @@ export const en = {
 
   'contact.label': 'Contact',
   'contact.heading': "If something looks like your kind of problem, let's talk.",
+  'contact.note':
+    'Full-stack development learner based in Pekalongan, Indonesia. Currently open to internships and junior roles.',
+  'contact.pages': 'Pages',
+  'contact.social': 'Social',
+  'contact.card': "Let's talk",
+  'contact.field.first': 'First name',
+  'contact.field.last': 'Last name',
+  'contact.field.email': 'Email address',
+  'contact.field.message': 'Your message',
+  'contact.send': 'Send message',
+  'contact.sending': 'Sending…',
+  'contact.sent': 'Message sent. Thank you — I will reply within a few days.',
+  'contact.failed': 'Something went wrong. Try again, or email me directly.',
+  'contact.hp': 'Leave this field empty',
+  'contact.mail.subject': 'Portfolio enquiry',
 
   'footer.rights': 'All rights reserved.',
   'footer.top': 'Back to top',

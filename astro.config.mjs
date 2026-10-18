@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   // TODO: ganti dengan domain asli setelah deploy ke Vercel.
@@ -8,4 +9,7 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
+  // Semua halaman tetap HTML statis. Hanya src/pages/api/contact.ts
+  // yang opted out dari prerender lewat `export const prerender = false`.
+  adapter: vercel(),
 });
