@@ -1,0 +1,99 @@
+---
+import type { Locale } from '../i18n/index.ts';
+import { t } from '../i18n/index.ts';
+import { profile } from '../data/profile.ts';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const dict = t(lang);
+---
+
+<section class="hero container">
+  <p class="eyebrow reveal">
+    <span>{dict['hero.role']}</span>
+    <span class="sep" aria-hidden="true">—</span>
+    <span>{dict['hero.location']}</span>
+  </p>
+
+  <h1 class="reveal" style="--d: 60ms">{dict['hero.tagline']}</h1>
+
+  <div class="cta reveal" style="--d: 120ms">
+    <a class="primary" href="#work">{dict['hero.primary']}</a>
+    <a class="secondary" href={`mailto:${profile.email}`}>{dict['hero.secondary']}</a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(72px, 14vh, 160px) var(--section-y);
+  }
+
+  .eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  .sep {
+    color: var(--line-strong);
+  }
+
+  h1 {
+    font-size: var(--text-display);
+    font-weight: 500;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+    max-width: 15ch;
+    text-wrap: balance;
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 44px;
+  }
+
+  .cta a {
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    padding-inline: 22px;
+    font-family: var(--mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    transition: border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease),
+      color var(--dur-fast) var(--ease);
+  }
+
+  .primary {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+
+  .primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--surface);
+  }
+
+  .secondary {
+    color: var(--muted);
+  }
+
+  .secondary:hover {
+    color: var(--ink);
+    border-color: var(--line-strong);
+  }
+</style>

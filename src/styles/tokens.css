@@ -1,0 +1,61 @@
+/* Nordic Grey — design tokens
+  _radius: 0 | shadow: none | gradient: none — these are the rules, not choices. */
+
+:root {
+  /* color — light */
+  --bg: #f2f3f3;
+  --surface: #ffffff;
+  --ink: #16181a;
+  --muted: #6b7073;
+  --line: #dee1e2;
+  --line-strong: #c7cbcc;
+  --accent: #4a6b7c;
+  --accent-soft: #e6ecef;
+
+  /* type */
+  --font: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  --text-xs: 0.8125rem; /* 13px — labels, meta, captions */
+  --text-sm: 0.9375rem; /* 15px — project description */
+  --text-base: 1.0625rem; /* 17px — body */
+  --text-lg: 1.375rem; /* 22px */
+  --text-xl: 1.75rem; /* 28px */
+  --text-2xl: 2.25rem; /* 36px */
+  --text-display: clamp(2.5rem, 7.5vw, 5.5rem);
+
+  --leading-tight: 1.05;
+  --leading-snug: 1.25;
+  --leading-body: 1.65;
+  --tracking-display: -0.035em;
+  --tracking-label: 0.12em;
+
+  /* layout */
+  --container: 1080px;
+  --gutter: 24px;
+  --section-y: 120px;
+  --section-y-sm: 72px;
+
+  /* motion */
+  --dur: 500ms;
+  --dur-fast: 180ms;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  --bg: #0e0f10;
+  --surface: #16181a;
+  --ink: #edeff0;
+  --muted: #8e9498;
+  --line: #26292b;
+  --line-strong: #343839;
+  --accent: #9fb6c4;
+  --accent-soft: #1a2024;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --gutter: 20px;
+    --section-y: var(--section-y-sm);
+  }
+}

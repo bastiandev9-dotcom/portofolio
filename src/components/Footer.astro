@@ -1,0 +1,72 @@
+---
+import type { Locale } from '../i18n/index.ts';
+import { t } from '../i18n/index.ts';
+import { profile } from '../data/profile.ts';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const dict = t(lang);
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container bar">
+    <p class="mono">
+      © {year} {profile.name} — {dict['hero.location']}
+    </p>
+
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href={profile.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+        <li>
+          <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </li>
+        <li>
+          <a href={profile.links.instagram} target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        </li>
+        <li><a href="#top">{dict['footer.top']} ↑</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--line);
+    padding-block: 32px 40px;
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  p {
+    color: var(--muted);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+  }
+
+  a {
+    font-family: var(--mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    transition: color var(--dur-fast) var(--ease);
+  }
+
+  a:hover {
+    color: var(--ink);
+  }
+</style>
