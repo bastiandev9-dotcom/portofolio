@@ -10,7 +10,6 @@ export const en = {
 
   'nav.work': 'Work',
   'nav.about': 'About',
-  'nav.stack': 'Stack',
   'nav.contact': 'Contact',
 
   'hero.role': 'Full-Stack Development Learner',
@@ -20,6 +19,7 @@ export const en = {
   'hero.secondary': 'Email me',
 
   'work.label': 'Selected work',
+  'work.all': 'All work',
   'work.archive': 'Archive',
   'work.live': 'Live',
   'work.repo': 'Repo',

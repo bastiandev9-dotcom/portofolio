@@ -71,6 +71,16 @@ a {
   border-top: 1px solid var(--line);
 }
 
+/* Each page is its own file now — the first section has nothing above it. */
+main > .section:first-child {
+  border-top: 0;
+}
+
+/* On the home page the hero already supplies the space. */
+main > .hero + .section {
+  padding-top: 0;
+}
+
 .section__head {
   display: flex;
   align-items: baseline;

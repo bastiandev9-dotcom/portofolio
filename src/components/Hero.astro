@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../i18n/index.ts';
-import { t } from '../i18n/index.ts';
+import { t, hrefFor } from '../i18n/index.ts';
 import { profile } from '../data/profile.ts';
 
 interface Props {
@@ -20,7 +20,7 @@ const dict = t(lang);
   <h1 class="reveal" style="--d: 60ms">{dict['hero.tagline']}</h1>
 
   <div class="cta reveal" style="--d: 120ms">
-    <a class="primary" href="#work">{dict['hero.primary']}</a>
+    <a class="primary" href={hrefFor(lang, 'work')}>{dict['hero.primary']}</a>
     <a class="secondary" href={`mailto:${profile.email}`}>{dict['hero.secondary']}</a>
   </div>
 </section>

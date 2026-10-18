@@ -1,35 +1,40 @@
 ---
-import type { Locale } from '../i18n/index.ts';
+import type { Locale, Route } from '../i18n/index.ts';
 import { t, otherLang, hrefFor } from '../i18n/index.ts';
 import { profile } from '../data/profile.ts';
 import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
   lang: Locale;
+  path: Route;
 }
-const { lang } = Astro.props;
+const { lang, path } = Astro.props;
 const dict = t(lang);
 const alt = otherLang(lang);
-const links = [
-  { href: '/#work', label: dict['nav.work'] },
-  { href: '/#about', label: dict['nav.about'] },
-  { href: '/#stack', label: dict['nav.stack'] },
-  { href: '/#contact', label: dict['nav.contact'] },
-];
+
+const nav = (['work', 'about', 'contact'] as const).map((route) => ({
+  route,
+  href: hrefFor(lang, route),
+  label: dict[`nav.${route}`],
+  current: path === route,
+}));
 ---
 
 <header>
   <div class="container bar">
-    <a class="brand" href={hrefFor(lang)}>
-      <span class="mono">{profile.name}</span>
+    <a class="brand mono" href={hrefFor(lang, 'home')} aria-label={profile.name}>
+      <span class="long">{profile.name}</span>
+      <span class="short">{profile.monogram}</span>
     </a>
 
     <nav aria-label="Primary">
       <ul>
         {
-          links.map((link) => (
+          nav.map((item) => (
             <li>
-              <a href={link.href}>{link.label}</a>
+              <a href={item.href} aria-current={item.current ? 'page' : undefined}>
+                {item.label}
+              </a>
             </li>
           ))
         }
@@ -37,9 +42,13 @@ const links = [
     </nav>
 
     <div class="controls">
-      <a class="lang" href={hrefFor(alt)} lang={alt} hreflang={alt} aria-label={dict['a11y.lang']}>
-        {alt.toUpperCase()}
-      </a>
+      <a
+        class="lang mono"
+        href={hrefFor(alt, path)}
+        lang={alt}
+        hreflang={alt}
+        aria-label={dict['a11y.lang']}>{alt.toUpperCase()}</a
+      >
       <ThemeToggle lang={lang} />
     </div>
   </div>
@@ -68,6 +77,30 @@ const links = [
     white-space: nowrap;
   }
 
+  /* The nav is the only way to reach other pages now, so it must survive
+     small screens — the long name is what gives way, not the links. */
+  .short {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .long {
+      display: none;
+    }
+
+    .short {
+      display: inline;
+    }
+
+    ul {
+      gap: 14px;
+    }
+
+    .bar {
+      gap: 12px;
+    }
+  }
+
   ul {
     display: flex;
     gap: 28px;
@@ -80,11 +113,19 @@ const links = [
     font-size: var(--text-xs);
     letter-spacing: 0.04em;
     color: var(--muted);
-    transition: color var(--dur-fast) var(--ease);
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
   }
 
   nav a:hover {
     color: var(--ink);
+  }
+
+  /* Current page carries the weight — no background pill, just ink. */
+  nav a[aria-current='page'] {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
   }
 
   .controls {
@@ -99,8 +140,6 @@ const links = [
     min-width: 34px;
     height: 34px;
     border: 1px solid var(--line);
-    font-family: var(--mono);
-    font-size: var(--text-xs);
     letter-spacing: 0.04em;
     color: var(--muted);
     transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
@@ -109,11 +148,5 @@ const links = [
   .lang:hover {
     color: var(--ink);
     border-color: var(--line-strong);
-  }
-
-  @media (max-width: 860px) {
-    nav {
-      display: none;
-    }
   }
 </style>

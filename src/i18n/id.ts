@@ -12,7 +12,6 @@ export const id: Dict = {
 
   'nav.work': 'Karya',
   'nav.about': 'Tentang',
-  'nav.stack': 'Stack',
   'nav.contact': 'Kontak',
 
   'hero.role': 'Pelajar Full-Stack Development',
@@ -22,6 +21,7 @@ export const id: Dict = {
   'hero.secondary': 'Kirim email',
 
   'work.label': 'Karya terpilih',
+  'work.all': 'Semua karya',
   'work.archive': 'Arsip',
   'work.live': 'Demo',
   'work.repo': 'Repo',

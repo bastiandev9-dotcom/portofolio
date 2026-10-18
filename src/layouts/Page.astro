@@ -4,8 +4,8 @@ import '../styles/tokens.css';
 import '../styles/global.css';
 
 import { getCollection, render } from 'astro:content';
-import type { Locale } from '../i18n/index.ts';
-import { t, LOCALES, hrefFor } from '../i18n/index.ts';
+import type { Locale, Route } from '../i18n/index.ts';
+import { t, LOCALES, hrefFor, ROUTE_LABEL } from '../i18n/index.ts';
 import { profile, facts, stackGroups } from '../data/profile.ts';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
@@ -14,15 +14,19 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
   lang: Locale;
+  path: Route;
 }
-const { lang } = Astro.props;
+const { lang, path } = Astro.props;
 const dict = t(lang);
 
 const entry = (await getCollection('about')).find((e) => e.data.locale === lang);
 const { Content } = entry ? await render(entry) : { Content: undefined };
 const detail = facts[lang];
 
-const canonical = new URL(hrefFor(lang), Astro.site);
+const title =
+  path === 'home' ? dict['meta.title'] : `${dict[ROUTE_LABEL[path]]} — ${dict['meta.title']}`;
+
+const canonical = new URL(hrefFor(lang, path), Astro.site);
 const ogImage = new URL('/og.png', Astro.site);
 ---
 
@@ -31,19 +35,20 @@ const ogImage = new URL('/og.png', Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{dict['meta.title']}</title>
+    <title>{title}</title>
     <meta name="description" content={dict['meta.description']} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     {
       LOCALES.map((l) => (
-        <link rel="alternate" hreflang={l} href={new URL(hrefFor(l), Astro.site)} />
+        <link rel="alternate" hreflang={l} href={new URL(hrefFor(l, path), Astro.site)} />
       ))
     }
+    <link rel="alternate" hreflang="x-default" href={new URL(hrefFor('en', path), Astro.site)} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={dict['meta.title']} />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={dict['meta.description']} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
@@ -73,87 +78,102 @@ const ogImage = new URL('/og.png', Astro.site);
 
   <body>
     <a class="skip-link" href="#main">{dict['a11y.skip']}</a>
-    <Nav lang={lang} />
+    <Nav lang={lang} path={path} />
 
     <main id="main">
-      <Hero lang={lang} />
-      <Work lang={lang} />
+      {path === 'home' && <Hero lang={lang} />}
+      {path === 'home' && <Work lang={lang} variant="compact" />}
+      {path === 'work' && <Work lang={lang} variant="full" />}
 
-      <section id="about" class="section">
-        <div class="container">
-          <div class="section__head reveal">
-            <h2 class="label">{dict['about.label']}</h2>
-          </div>
+      {
+        (path === 'home' || path === 'about') && (
+          <section id="about" class="section">
+            <div class="container">
+              <div class="section__head reveal">
+                <h2 class="label">{dict['about.label']}</h2>
+              </div>
 
-          <div class="about">
-            <div class="bio reveal">
-              {Content && <Content />}
-            </div>
-
-            <dl class="reveal" style="--d: 80ms">
-              {
-                detail.map((row) => (
-                  <div>
-                    <dt>{row.label}</dt>
-                    <dd>{row.value}</dd>
-                  </div>
-                ))
-              }
-            </dl>
-          </div>
-        </div>
-      </section>
-
-      <section id="stack" class="section">
-        <div class="container">
-          <div class="section__head reveal">
-            <h2 class="label">{dict['stack.label']}</h2>
-          </div>
-
-          <div class="groups reveal">
-            {
-              stackGroups.map((group) => (
-                <div class="group">
-                  <h3 class="label">{group.label}</h3>
-                  <ul>
-                    {group.items.map((item) => (
-                      <li class="mono">{item}</li>
-                    ))}
-                  </ul>
+              <div class="about">
+                <div class="bio reveal">
+                  {Content && <Content />}
                 </div>
-              ))
-            }
-          </div>
 
-          <p class="note mono reveal">{dict['stack.note']}</p>
-        </div>
-      </section>
+                <dl class="reveal" style="--d: 80ms">
+                  {detail.map((row) => (
+                    <div>
+                      <dt>{row.label}</dt>
+                      <dd>{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </section>
+        )
+      }
 
-      <section id="contact" class="section">
-        <div class="container">
-          <div class="section__head reveal">
-            <h2 class="label">{dict['contact.label']}</h2>
-          </div>
+      {
+        path === 'about' && (
+          <section id="stack" class="section">
+            <div class="container">
+              <div class="section__head reveal">
+                <h2 class="label">{dict['stack.label']}</h2>
+              </div>
 
-          <p class="heading reveal">{dict['contact.heading']}</p>
+              <div class="groups reveal">
+                {stackGroups.map((group) => (
+                  <div class="group">
+                    <h3 class="label">{group.label}</h3>
+                    <ul>
+                      {group.items.map((item) => (
+                        <li class="mono">{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
 
-          <a class="email reveal" style="--d: 60ms" href={`mailto:${profile.email}`}>
-            {profile.email}
-          </a>
+              <p class="note mono reveal">{dict['stack.note']}</p>
+            </div>
+          </section>
+        )
+      }
 
-          <ul class="elsewhere reveal" style="--d: 120ms">
-            <li><a href={profile.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
-            <li>
-              <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-            </li>
-            <li>
-              <a href={profile.links.instagram} target="_blank" rel="noopener noreferrer">
-                Instagram ↗
+      {
+        (path === 'home' || path === 'contact') && (
+          <section id="contact" class="section">
+            <div class="container">
+              <div class="section__head reveal">
+                <h2 class="label">{dict['contact.label']}</h2>
+              </div>
+
+              <p class="heading reveal">{dict['contact.heading']}</p>
+
+              <a class="email reveal" style="--d: 60ms" href={`mailto:${profile.email}`}>
+                {profile.email}
               </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+
+              <ul class="elsewhere reveal" style="--d: 120ms">
+                <li>
+                  <a href={profile.links.github} target="_blank" rel="noopener noreferrer">
+                    GitHub ↗
+                  </a>
+                </li>
+                <li>
+                  <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">
+                    LinkedIn ↗
+                  </a>
+                </li>
+                <li>
+                  <a href={profile.links.instagram} target="_blank" rel="noopener noreferrer">
+                    Instagram ↗
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </section>
+        )
+      }
     </main>
 
     <Footer lang={lang} />

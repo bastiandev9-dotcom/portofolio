@@ -20,16 +20,31 @@ npm run og        # regenerate public/og.png
 
 ```
 src/
-  i18n/         en.ts + id.ts dictionaries, index.ts holds the Locale type
+  i18n/         en.ts + id.ts dictionaries, index.ts holds Locale + Route
   data/         profile.ts — name, links, facts, stack groups, archive list
   content/      projects/<locale>/*.md and about/<locale>.md
-  layouts/      Page.astro — the whole single page, plus head and both scripts
+  layouts/      Page.astro — head, Nav, Footer, and every section
+  pages/        4 routes x 2 locales, each a thin <Page lang path />
   components/   Nav, Hero, Work, Footer, ThemeToggle
   styles/       tokens.css (colour + scale), global.css (reset + primitives)
 ```
 
-Two routes: `/` (en) and `/id/`. Both render `Page.astro` with a different
-`lang` prop — the markup is written once.
+Eight static files, one page per section per locale:
+
+| | EN | ID |
+|---|---|---|
+| home | `/` | `/id/` |
+| work | `/work/` | `/id/work/` |
+| about | `/about/` | `/id/about/` |
+| contact | `/contact/` | `/id/contact/` |
+
+Every page renders `Page.astro` with a `lang` and a `path`; the markup is
+written once and the section list is decided there. The language toggle keeps
+you on the same page — `/id/work/` links to `/work/`.
+
+`Work.astro` takes a `variant`: `compact` on the home page (titles, stack,
+links, no prose), `full` on the work page (prose plus the archive bar). Both
+read the same Markdown, so a project is never written twice.
 
 ## Adding a project
 
