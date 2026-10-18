@@ -82,8 +82,6 @@ const ogImage = new URL('/og.png', Astro.site);
 
     <main id="main">
       {path === 'home' && <Hero lang={lang} />}
-      {path === 'home' && <Work lang={lang} variant="compact" />}
-      {path === 'work' && <Work lang={lang} variant="full" />}
 
       {
         (path === 'home' || path === 'about') && (
@@ -111,6 +109,9 @@ const ogImage = new URL('/og.png', Astro.site);
           </section>
         )
       }
+
+      {path === 'home' && <Work lang={lang} variant="compact" />}
+      {path === 'work' && <Work lang={lang} variant="full" />}
 
       {
         path === 'about' && (
