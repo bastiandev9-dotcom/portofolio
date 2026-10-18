@@ -564,9 +564,15 @@ path === 'contact' && (
     transition: border-color var(--dur-fast) var(--ease);
   }
 
+  /* Fields get their focus cue from the rule itself. The global 2px box
+     looked like a second border around the field. Padding drops by 1px so
+     swapping a 1px rule for a 2px one does not shift the layout. */
   input:focus-visible,
   textarea:focus-visible {
+    outline: none;
+    border-bottom-width: 2px;
     border-bottom-color: var(--accent);
+    padding-bottom: 11px;
   }
 
   .send {
