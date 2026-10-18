@@ -34,12 +34,14 @@ export const id: Dict = {
   'stack.label': 'Stack',
   'stack.note': 'Tools yang benar-benar saya pakai. Daftar lengkap ada di GitHub.',
 
-  'contact.label': 'Kontak',
-  'contact.heading': 'Kalau ada masalah yang memang seperti ini, saya tertarik. Boleh kita bicara?',
   'contact.note':
-    'Pelajar full-stack development dari Pekalongan, Indonesia. Saat ini terbuka untuk magang dan posisi junior.',
+    'Pelajar full-stack development dari Pekalongan, Indonesia. Kalau ada masalah yang memang seperti ini, beri tahu saya.',
   'contact.social': 'Sosial',
-  'contact.card': 'Mari bicara',
+  'contact.headline.a': 'Mari bangun',
+  'contact.headline.b': 'sesuatu',
+  'contact.elsewhere': 'Di tempat lain',
+  'contact.form.title': 'Kirim pesan',
+  'contact.form.note': 'Biasanya dibalas dalam satu dua hari.',
   'contact.field.first': 'Nama depan',
   'contact.field.last': 'Nama belakang',
   'contact.field.email': 'Alamat email',
@@ -49,7 +51,6 @@ export const id: Dict = {
   'contact.sent': 'Pesan terkirim. Terima kasih — saya akan membalas dalam beberapa hari.',
   'contact.failed': 'Terjadi kesalahan. Coba lagi, atau kirim email langsung.',
   'contact.hp': 'Biarkan kolom ini kosong',
-  'contact.mail.subject': 'Pertanyaan dari portofolio',
 
   'footer.rights': 'Hak cipta dilindungi.',
   'footer.top': 'Kembali ke atas',

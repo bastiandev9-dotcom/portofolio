@@ -46,8 +46,9 @@ you on the same page — `/id/work/` links to `/work/`.
 links, no prose), `full` on the work page (prose plus the archive bar). Both
 read the same Markdown, so a project is never written twice.
 
-`/contact/` is self-contained — no Nav, no Footer, its own wordmark and page
-links, like a landing page.
+`/contact/` keeps the navbar but drops the shared footer — it carries its own
+two-item copyright line, and the social links already sit in the "Elsewhere"
+list, so the site footer would only repeat them.
 
 ## Contact form
 

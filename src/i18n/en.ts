@@ -32,12 +32,14 @@ export const en = {
   'stack.label': 'Stack',
   'stack.note': 'Tools I actually reach for. Full list lives on GitHub.',
 
-  'contact.label': 'Contact',
-  'contact.heading': "If something looks like your kind of problem, let's talk.",
   'contact.note':
-    'Full-stack development learner based in Pekalongan, Indonesia. Currently open to internships and junior roles.',
+    'Full-stack development learner based in Pekalongan, Indonesia. If something looks like your kind of problem, say hello.',
   'contact.social': 'Social',
-  'contact.card': "Let's talk",
+  'contact.headline.a': 'Let’s build',
+  'contact.headline.b': 'something',
+  'contact.elsewhere': 'Elsewhere',
+  'contact.form.title': 'Send a message',
+  'contact.form.note': 'Usually replies within a day or two.',
   'contact.field.first': 'First name',
   'contact.field.last': 'Last name',
   'contact.field.email': 'Email address',
@@ -47,7 +49,6 @@ export const en = {
   'contact.sent': 'Message sent. Thank you — I will reply within a few days.',
   'contact.failed': 'Something went wrong. Try again, or email me directly.',
   'contact.hp': 'Leave this field empty',
-  'contact.mail.subject': 'Portfolio enquiry',
 
   'footer.rights': 'All rights reserved.',
   'footer.top': 'Back to top',
