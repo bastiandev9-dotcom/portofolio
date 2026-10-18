@@ -147,7 +147,7 @@ const ogImage = new URL('/og.png', Astro.site);
               <div class="grid">
               <header class="who reveal">
                 <p class="wordmark">{profile.name}<span>.</span></p>
-                <p class="about">{dict['contact.note']}</p>
+                <p class="blurb">{dict['contact.note']}</p>
                 <p class="fact">{dict['hero.location']}</p>
                 <p class="fact">
                   <a href={`mailto:${profile.email}`}>{profile.email}</a>
@@ -432,7 +432,7 @@ const ogImage = new URL('/og.png', Astro.site);
     color: var(--accent);
   }
 
-  .about {
+  .blurb {
     margin-top: 26px;
     max-width: 36ch;
     font-size: var(--text-sm);
