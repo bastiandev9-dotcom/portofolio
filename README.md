@@ -1,4 +1,4 @@
-# Ogi Bastian — Portfolio
+# Ogi Bastian  Portfolio
 
 Static bilingual portfolio. Astro 5, no client framework, no dark-art backend.
 Dark theme is plain light-mode over CSS custom properties, so there is nothing

@@ -1,7 +1,7 @@
 import type { Dict } from './en.ts';
 
 export const id: Dict = {
-  'meta.title': 'Ogi Bastian — Pelajar Full-Stack Development',
+  'meta.title': 'Ogi Bastian  Pelajar Full-Stack Development',
   'meta.description':
     'Pelajar full-stack development dari Pekalongan, Indonesia. Belajar cepat, tetap rilis.',
 

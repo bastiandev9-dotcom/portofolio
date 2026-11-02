@@ -1,5 +1,5 @@
 export const en = {
-  'meta.title': 'Ogi Bastian — Full-Stack Development Learner',
+  'meta.title': 'Ogi Bastian  Full-Stack Development Learner',
   'meta.description':
     'Full-stack development learner from Pekalongan, Indonesia. Learning fast and shipping anyway.',
 
