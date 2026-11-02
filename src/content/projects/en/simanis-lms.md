@@ -10,4 +10,4 @@ team: true
 
 A learning management system for SMK Mataram covering students, teachers, subjects, modules, and counselling. Built on Bun, Elysia, and Drizzle with a Next.js 15 front end and JWT role-based auth.
 
-Team project for a Software Engineering course — REST API with full CRUD on auth, subjects, and modules, role-guarded endpoints for admin / teacher / student, and dashboards per role.
+Team project for a Software Engineering course. REST API with full CRUD on auth, subjects, and modules, role-guarded endpoints for admin / teacher / student, and dashboards per role.

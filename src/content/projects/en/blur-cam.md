@@ -10,4 +10,4 @@ repo: https://github.com/bastiandev9-dotcom/Blur-cam
 
 Real‑time webcam background blur tool built with vanilla JavaScript and Canvas API. Apply Gaussian blur to video feed, adjust blur radius via slider, and download the processed frame.
 
-No external libraries — pure getUserMedia and 2D canvas operations. Runs entirely in the browser.
+No external libraries, pure getUserMedia and 2D canvas operations. Runs entirely in the browser.
